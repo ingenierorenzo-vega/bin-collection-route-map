@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Upgrade in progress</title>
+<style>
+  /* ============================================================
+     Bin Collection Route Map — maintenance page.
+     To customize: edit the return date in the .eta block below.
+     ============================================================ */
+
+  :root {
+    --ink: #1b2432;
+    --paper: #f6f7f9;
+    --card: #ffffff;
+    --steel: #5b6b80;
+    --line: #dde3ea;
+    --hivis: #ffc400;
+    --hivis-dark: #b38600;
+    --ok: #1a7f4b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Segoe UI", -apple-system, Roboto, Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .notice {
+    background: var(--card);
+    max-width: 460px;
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(27, 36, 50, 0.10);
+  }
+
+  /* Hi-vis chevron stripe — the warehouse signature */
+  .stripe {
+    height: 14px;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--hivis) 0px,
+      var(--hivis) 14px,
+      var(--ink) 14px,
+      var(--ink) 28px
+    );
+  }
+
+  .inner { padding: 30px 28px 26px; }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--hivis-dark);
+    background: #fff7dc;
+    border: 1px solid #f0dfa0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .lead {
+    color: var(--steel);
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+
+  .whats-coming {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    margin-bottom: 22px;
+  }
+
+  .whats-coming h2 {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 12px;
+  }
+
+  ul { list-style: none; }
+
+  li {
+    font-size: 14.5px;
+    line-height: 1.45;
+    padding: 6px 0 6px 28px;
+    position: relative;
+  }
+
+  li::before {
+    content: "✓";
+    position: absolute;
+    left: 2px;
+    top: 6px;
+    color: var(--ok);
+    font-weight: 700;
+  }
+
+  .eta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #eef4ee;
+    border: 1px solid #cfe3d2;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .eta .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ok);
+    flex-shrink: 0;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eta .dot { animation: none; }
+  }
+
+  .signoff {
+    font-size: 13px;
+    color: var(--steel);
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+
+  .signoff strong { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="notice" role="status">
+  <div class="stripe" aria-hidden="true"></div>
+  <div class="inner">
+
+    <span class="tag">Upgrade in progress</span>
+
+    <h1>The Bin Collection Route Map is getting better</h1>
+
+    <p class="lead">
+      The tool you know isn't gone — it's being moved to a new, more secure
+      home with extra features. Your saved link will keep working; check back
+      here for the new access details.
+    </p>
+
+    <div class="whats-coming">
+      <h2>What's coming</h2>
+      <ul>
+        <li>Secure access — only for our team</li>
+        <li>Faster loading and a cleaner layout</li>
+        <li>Same tool, same purpose — just better</li>
+      </ul>
+    </div>
+
+    <div class="eta">
+      <span class="dot" aria-hidden="true"></span>
+      <span><strong>Back online soon</strong>&nbsp;— this page will be updated</span>
+    </div>
+
+    <p class="signoff">
+      Questions in the meantime? Just ask me on the floor.<br>
+      — <strong>Renzo</strong>, Meat &amp; Poultry Chiller
+    </p>
+
+  </div>
+</div>
+
+</body>
+</html>
