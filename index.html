@@ -4,101 +4,308 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Upgrade in progress</title>
+<meta name="theme-color" content="#0050AA">
+<title>Warehouse Tools — release Tue 28.07</title>
 <style>
-  /* ============================================================
-     Bin Collection Route Map — maintenance page.
-     To customize: edit the return date in the .eta block below.
-     ============================================================ */
-
   :root {
-    --ink: #1b2432;
-    --paper: #f6f7f9;
-    --card: #ffffff;
-    --steel: #5b6b80;
-    --line: #dde3ea;
-    --hivis: #ffc400;
-    --hivis-dark: #b38600;
-    --ok: #1a7f4b;
+    --blue:        #0050AA;
+    --blue-dark:   #003C82;
+    --blue-light:  #E7EFF8;
+    --yellow:      #FFF000;
+    --yellow-warm: #FBCB03;
+    --red:         #E60A14;
+    --ink:         #202020;
+    --grey:        #6B7280;
+    --grey-line:   #E0E0E0;
+    --page:        #F4F4F4;
+    --white:       #FFFFFF;
+    --sans: "Segoe UI", "Helvetica Neue", Arial, Helvetica, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: "Segoe UI", -apple-system, Roboto, Arial, sans-serif;
-    background: var(--paper);
+    font-family: var(--sans);
+    background: var(--page);
     color: var(--ink);
     min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 24px 16px;
+    padding: 0 0 40px;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .notice {
-    background: var(--card);
-    max-width: 460px;
+  .shell {
     width: 100%;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(27, 36, 50, 0.10);
+    max-width: 560px;
+    background: var(--white);
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.10);
   }
 
-  /* Hi-vis chevron stripe — the warehouse signature */
-  .stripe {
-    height: 14px;
-    background: repeating-linear-gradient(
-      -45deg,
-      var(--hivis) 0px,
-      var(--hivis) 14px,
-      var(--ink) 14px,
-      var(--ink) 28px
-    );
+  /* ---------- Header bar ---------- */
+  .topbar {
+    background: var(--blue);
+    color: var(--white);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
   }
 
-  .inner { padding: 30px 28px 26px; }
-
-  .tag {
-    display: inline-block;
-    font-size: 11px;
+  .sitemark {
+    font-size: 13px;
     font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .sitemark span {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    opacity: 0.75;
+    margin-top: 3px;
+  }
+
+  .status-chip {
+    flex-shrink: 0;
+    background: var(--yellow);
+    color: var(--blue-dark);
+    font-size: 10px;
+    font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--hivis-dark);
-    background: #fff7dc;
-    border: 1px solid #f0dfa0;
-    padding: 4px 10px;
-    border-radius: 999px;
-    margin-bottom: 14px;
+    padding: 6px 11px;
+    border-radius: 3px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--yellow);
+    padding: 34px 24px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
   }
 
   h1 {
-    font-size: 26px;
-    line-height: 1.2;
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
-  }
-
-  .lead {
-    color: var(--steel);
-    font-size: 15px;
-    line-height: 1.55;
-    margin-bottom: 22px;
-  }
-
-  .whats-coming {
-    border-top: 1px solid var(--line);
-    padding-top: 18px;
-    margin-bottom: 22px;
-  }
-
-  .whats-coming h2 {
-    font-size: 12px;
-    letter-spacing: 0.1em;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
     text-transform: uppercase;
-    color: var(--steel);
-    margin-bottom: 12px;
+    color: var(--blue);
+    max-width: 78%;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+
+  .hero p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-top: 14px;
+    max-width: 78%;
+  }
+
+  /* Signature: the price-bubble, repurposed as the release date */
+  .bubble {
+    position: absolute;
+    top: 22px;
+    right: 18px;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-8deg);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  }
+
+  .bubble .day {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+
+  .bubble .mon {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  .bubble .dow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 5px;
+    opacity: 0.9;
+  }
+
+  /* ---------- Countdown ---------- */
+  .countdown {
+    background: var(--blue);
+    padding: 22px 24px 20px;
+  }
+
+  .countdown .label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .units {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .unit {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 13px 4px 10px;
+    text-align: center;
+  }
+
+  .unit .num {
+    display: block;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--blue);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
+
+  .unit .cap {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 8px;
+  }
+
+  .go-live {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  /* ---------- Live state ---------- */
+  .live-hero {
+    background: var(--yellow);
+    padding: 34px 24px 30px;
+    text-align: center;
+  }
+
+  .live-hero h1 { max-width: none; margin: 0 auto; }
+
+  .live-hero p {
+    font-size: 15px;
+    color: var(--ink);
+    margin: 14px auto 20px;
+    max-width: 90%;
+    line-height: 1.5;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 15px 32px;
+    border-radius: 4px;
+    border: 3px solid var(--blue);
+  }
+
+  .btn:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+  .btn:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+  /* ---------- Body sections ---------- */
+  .section { padding: 26px 24px; border-bottom: 1px solid var(--grey-line); }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--yellow);
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  .tool {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--blue-light);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+
+  .tool:last-child { margin-bottom: 0; }
+
+  .tool .tick {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tool .name {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .tool .desc {
+    font-size: 13px;
+    color: var(--grey);
+    line-height: 1.45;
+    margin-top: 3px;
   }
 
   ul { list-style: none; }
@@ -106,96 +313,230 @@
   li {
     font-size: 14.5px;
     line-height: 1.45;
-    padding: 6px 0 6px 28px;
+    padding: 7px 0 7px 26px;
     position: relative;
   }
 
   li::before {
-    content: "✓";
+    content: "";
     position: absolute;
-    left: 2px;
-    top: 6px;
-    color: var(--ok);
-    font-weight: 700;
+    left: 0;
+    top: 13px;
+    width: 12px;
+    height: 3px;
+    background: var(--red);
   }
 
-  .eta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #eef4ee;
-    border: 1px solid #cfe3d2;
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-
-  .eta .dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--ok);
-    flex-shrink: 0;
-    animation: pulse 1.8s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .eta .dot { animation: none; }
-  }
-
-  .signoff {
+  /* ---------- Footer ---------- */
+  .footer {
+    background: var(--blue-dark);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 22px 24px;
     font-size: 13px;
-    color: var(--steel);
-    border-top: 1px solid var(--line);
-    padding-top: 14px;
+    line-height: 1.6;
   }
 
-  .signoff strong { color: var(--ink); }
+  .footer strong { color: var(--yellow); }
+
+  .disclaimer {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 11px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  [hidden] { display: none !important; }
+
+  @media (max-width: 430px) {
+    h1 { font-size: 27px; max-width: 100%; }
+    .hero p { max-width: 100%; }
+    .bubble {
+      position: static;
+      transform: none;
+      margin: 0 0 18px;
+      width: 88px;
+      height: 88px;
+    }
+    .unit .num { font-size: 25px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="notice" role="status">
-  <div class="stripe" aria-hidden="true"></div>
-  <div class="inner">
+<div class="shell">
 
-    <span class="tag">Upgrade in progress</span>
-
-    <h1>The Bin Collection Route Map is getting better</h1>
-
-    <p class="lead">
-      The tool you know isn't gone — it's being moved to a new, more secure
-      home with extra features. Your saved link will keep working; check back
-      here for the new access details.
-    </p>
-
-    <div class="whats-coming">
-      <h2>What's coming</h2>
-      <ul>
-        <li>Secure access — only for our team</li>
-        <li>Faster loading and a cleaner layout</li>
-        <li>Same tool, same purpose — just better</li>
-      </ul>
+  <div class="topbar">
+    <div class="sitemark">
+      RDC Mullingar
+      <span>Warehouse Tools</span>
     </div>
-
-    <div class="eta">
-      <span class="dot" aria-hidden="true"></span>
-      <span><strong>Back online soon</strong>&nbsp;— this page will be updated</span>
-    </div>
-
-    <p class="signoff">
-      Questions in the meantime? Just ask me on the floor.<br>
-      — <strong>Renzo</strong>, Meat &amp; Poultry Chiller
-    </p>
-
+    <div class="status-chip" id="chip">Update pending</div>
   </div>
+
+  <!-- ===== BEFORE RELEASE ===== -->
+  <div id="pending">
+    <div class="hero">
+      <div class="bubble" aria-hidden="true">
+        <span class="day">28</span>
+        <span class="mon">.07</span>
+        <span class="dow">Tue</span>
+      </div>
+      <div class="eyebrow">Release scheduled</div>
+      <h1>Major update <em>lands Tuesday</em></h1>
+      <p>Both floor tools are moving to a new, secure platform. They go live together on Tuesday morning — this page will take you straight there.</p>
+    </div>
+
+    <div class="countdown">
+      <div class="label">Time to release</div>
+      <div class="units" aria-live="polite" aria-atomic="true">
+        <div class="unit"><span class="num" id="d">--</span><span class="cap">Days</span></div>
+        <div class="unit"><span class="num" id="h">--</span><span class="cap">Hrs</span></div>
+        <div class="unit"><span class="num" id="m">--</span><span class="cap">Min</span></div>
+        <div class="unit"><span class="num" id="s">--</span><span class="cap">Sec</span></div>
+      </div>
+      <p class="go-live" id="go-live"></p>
+    </div>
+  </div>
+
+  <!-- ===== AFTER RELEASE ===== -->
+  <div id="live" hidden>
+    <div class="live-hero">
+      <div class="eyebrow">Now live</div>
+      <h1>Version 2 is <em>ready</em></h1>
+      <p id="redirect-note">Taking you there now…</p>
+      <a class="btn" id="open-btn" href="#">Open the tools</a>
+    </div>
+  </div>
+
+  <!-- ===== SHARED ===== -->
+  <div class="section">
+    <div class="section-title">What's being updated</div>
+    <div class="tool">
+      <span class="tick" aria-hidden="true">✓</span>
+      <div>
+        <div class="name">Meat &amp; Poultry Overspill Stock Map</div>
+        <div class="desc">Floor plan showing where overspill stock is sitting across the chiller.</div>
+      </div>
+    </div>
+    <div class="tool">
+      <span class="tick" aria-hidden="true">✓</span>
+      <div>
+        <div class="name">Bin Collection Route Map</div>
+        <div class="desc">Aisle-by-aisle route with bin points and broken allocation notes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What's new</div>
+    <ul>
+      <li>Secure access — team only, no public link</li>
+      <li>Both maps on one platform, one login</li>
+      <li>Faster loading and a cleaner layout on phones</li>
+      <li>Print-ready pages for the noticeboard</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    Questions in the meantime? Just ask me on the floor.<br>
+    — <strong>Renzo</strong>, Meat &amp; Poultry Chiller
+
+    <div class="disclaimer">
+      Internal working tool built and maintained by a colleague on site.
+      Not an official company system or communication.
+    </div>
+  </div>
+
 </div>
+
+<script>
+/* ============================================================
+   EDIT THESE THREE LINES ONLY
+   ============================================================ */
+
+// 1. Release moment — year, month-1, day, hour, minute
+//    (month is zero-based: 6 = July, 7 = August)
+const RELEASE = new Date(2026, 6, 28, 6, 0, 0);   // Tue 28 July 2026, 06:00
+
+// 2. Where to send people once it's live. Leave as "" to show
+//    the live message without redirecting anywhere yet.
+const REDIRECT_URL = "";                          // e.g. "https://tools.example.com/"
+
+// 3. Seconds to wait on the "live" screen before redirecting.
+const REDIRECT_DELAY = 5;
+
+/* ============================================================
+   No need to edit below this line.
+   Tip: add ?stay=1 to the page URL to preview without redirecting.
+   ============================================================ */
+
+const pending    = document.getElementById('pending');
+const live       = document.getElementById('live');
+const noRedirect = new URLSearchParams(location.search).has('stay');
+
+document.getElementById('go-live').textContent =
+  'Goes live ' +
+  RELEASE.toLocaleDateString('en-IE', { weekday: 'long', day: 'numeric', month: 'long' }) +
+  ' at ' +
+  RELEASE.toLocaleTimeString('en-IE', { hour: '2-digit', minute: '2-digit' });
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function showLive() {
+  pending.hidden = true;
+  live.hidden = false;
+  document.getElementById('chip').textContent = 'Live now';
+
+  const btn  = document.getElementById('open-btn');
+  const note = document.getElementById('redirect-note');
+
+  if (!REDIRECT_URL) {
+    btn.hidden = true;
+    note.textContent = 'The new link will be posted here and on the noticeboard.';
+    return;
+  }
+
+  btn.href = REDIRECT_URL;
+
+  if (noRedirect) {
+    note.textContent = 'Preview mode — automatic redirect is off.';
+    return;
+  }
+
+  let left = REDIRECT_DELAY;
+  note.textContent = 'Taking you there in ' + left + '…';
+  const t = setInterval(function () {
+    left--;
+    if (left <= 0) {
+      clearInterval(t);
+      location.replace(REDIRECT_URL);
+    } else {
+      note.textContent = 'Taking you there in ' + left + '…';
+    }
+  }, 1000);
+}
+
+function tick() {
+  const diff = RELEASE - new Date();
+
+  if (diff <= 0) {
+    clearInterval(timer);
+    showLive();
+    return;
+  }
+
+  const secs = Math.floor(diff / 1000);
+  document.getElementById('d').textContent = pad(Math.floor(secs / 86400));
+  document.getElementById('h').textContent = pad(Math.floor(secs / 3600) % 24);
+  document.getElementById('m').textContent = pad(Math.floor(secs / 60) % 60);
+  document.getElementById('s').textContent = pad(secs % 60);
+}
+
+tick();
+const timer = setInterval(tick, 1000);
+</script>
 
 </body>
 </html>
